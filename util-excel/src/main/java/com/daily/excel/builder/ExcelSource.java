@@ -8,5 +8,5 @@ import com.aspose.cells.Worksheet;
  */
 public abstract class ExcelSource {
 
-    protected abstract void process(Worksheet worksheet);
+    protected abstract int[] process(Worksheet worksheet, int row, int column) throws IllegalAccessException;
 }

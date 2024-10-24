@@ -3,7 +3,9 @@ package com.daily.excel.builder;
 import com.aspose.cells.Worksheet;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangxiao
@@ -16,7 +18,10 @@ public final class SheetBuilder {
      * 当前sheet页包含的数据源
      */
     private final List<ExcelSource> sources = new ArrayList<>();
-
+    /**
+     * Sheet页中的静态信息
+     */
+    private final Map<String, String> staticInfo = new HashMap<>();
     /**
      * sheet名称
      */
@@ -27,10 +32,14 @@ public final class SheetBuilder {
         this.sheetName = sheetName;
     }
 
-    void process(Worksheet sheet) {
+    void process(Worksheet sheet) throws Exception {
         sheet.setName(this.sheetName);
+        int row = 0;
+        int column = 0;
         for (ExcelSource source : sources) {
-            source.process(sheet);
+            int[] pair = source.process(sheet, row, column);
+            row = pair[0];
+            column = Math.max(column, pair[1]);
         }
     }
 

@@ -29,7 +29,7 @@ public final class ExcelBuilder {
         return sheetBuilder;
     }
 
-    public void build() {
+    public void build() throws Exception {
         Workbook workbook = workbookDesigner.getWorkbook();
         WorksheetCollection sheets = workbook.getWorksheets();
         for (SheetBuilder sheetBuilder : sheetBuilder) {

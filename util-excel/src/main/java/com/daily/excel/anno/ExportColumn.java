@@ -1,9 +1,13 @@
 package com.daily.excel.anno;
 
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
 /**
  * @author yangxiao
  * @since V1.0.0 2024/10/23
  */
+@Retention(RetentionPolicy.RUNTIME)
 public @interface ExportColumn {
     /**
      * 字段名称
